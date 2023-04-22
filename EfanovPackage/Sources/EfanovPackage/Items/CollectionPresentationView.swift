@@ -19,7 +19,7 @@ var flowLayout: UICollectionViewFlowLayout {
     return _flowLayout
 }
 
-final class CollectionPresentationView: UIView {
+public final class CollectionPresentationView: UIView {
     private let _stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -65,11 +65,7 @@ final class CollectionPresentationView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override var intrinsicContentSize: CGSize {
-//        _collectionView.contentSize
-//    }
-    
+
     private func _setupSubviews() {
         layer.cornerRadius = 24
         
@@ -107,7 +103,7 @@ final class CollectionPresentationView: UIView {
         _collectionView.dataSource = self
     }
     
-    func render(viewState: ViewState) {
+    public func render(viewState: ViewState) {
         _headerLabel.text = viewState.headerTitle
         _items = viewState.items
         _collectionView.reloadData()
@@ -123,20 +119,32 @@ final class CollectionPresentationView: UIView {
         _bottomButton.isHidden = viewState.buttonTitle == nil
     }
     
-    struct ViewState {
+    public struct ViewState {
         let headerTitle: String
         let items: [LabelsView.ViewState]
         let buttonTitle: String?
         let backgroundType: BackgroundType
+        
+        public init(
+            headerTitle: String,
+            items: [LabelsView.ViewState],
+            buttonTitle: String?,
+            backgroundType: BackgroundType
+        ) {
+            self.headerTitle = headerTitle
+            self.items = items
+            self.buttonTitle = buttonTitle
+            self.backgroundType = backgroundType
+        }
     }
 }
 
 extension CollectionPresentationView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         _items.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionItem.reuseIdentifier, for: indexPath)
         (cell as? CollectionItem)?.render(viewState: _items[indexPath.row])
         return cell

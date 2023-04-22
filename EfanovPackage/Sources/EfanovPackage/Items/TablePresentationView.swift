@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class TablePresentationView: UIView {
+public final class TablePresentationView: UIView {
     private let _tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -66,7 +66,7 @@ final class TablePresentationView: UIView {
         _tableView.dataSource = self
     }
     
-    func render(viewState: ViewState) {
+    public func render(viewState: ViewState) {
         _headerLabel.text = viewState.headerTitle
         _items = viewState.items
         _tableView.reloadData()
@@ -79,19 +79,25 @@ final class TablePresentationView: UIView {
         }
     }
     
-    struct ViewState {
+    public struct ViewState {
         let headerTitle: String
         let items: [TextWithIconView.ViewState]
         let backgroundType: BackgroundType
+        
+        public init(headerTitle: String, items: [TextWithIconView.ViewState], backgroundType: BackgroundType) {
+            self.headerTitle = headerTitle
+            self.items = items
+            self.backgroundType = backgroundType
+        }
     }
 }
 
 extension TablePresentationView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         _items.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableItem.reuseIdentifier, for: indexPath)
         (cell as? TableItem)?.render(viewState: _items[indexPath.row])
         return cell

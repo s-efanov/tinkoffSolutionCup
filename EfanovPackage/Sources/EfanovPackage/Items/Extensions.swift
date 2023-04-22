@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum BackgroundType {
+public enum BackgroundType {
     case white, gray
 }

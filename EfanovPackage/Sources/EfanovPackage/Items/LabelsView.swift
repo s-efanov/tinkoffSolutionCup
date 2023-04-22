@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LabelsView: UIView {
+public class LabelsView: UIView {
     private let _headerLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
@@ -67,7 +67,7 @@ class LabelsView: UIView {
         _stackView.setCustomSpacing(4, after: _headerLabel)
     }
     
-    func render(viewState: ViewState) {
+    public func render(viewState: ViewState) {
         _headerLabel.text = viewState.header
         _titleLabel.text = viewState.title
         _subheaderLabel.text = viewState.subheader
@@ -79,10 +79,17 @@ class LabelsView: UIView {
         _descriptionLabel.isHidden = viewState.description == nil
     }
     
-    struct ViewState {
+    public struct ViewState {
         let header: String?
         let subheader: String?
         let title: String?
         let description: String?
+        
+        public init(header: String?, subheader: String?, title: String?, description: String?) {
+            self.header = header
+            self.subheader = subheader
+            self.title = title
+            self.description = description
+        }
     }
 }

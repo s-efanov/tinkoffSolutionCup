@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TextWithIconView: UIView {
+public class TextWithIconView: UIView {
     private let _labelsView = LabelsView()
     private let _leftIcon: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Star"))
@@ -55,16 +55,21 @@ class TextWithIconView: UIView {
         _rightIcon.setContentHuggingPriority(.required, for: .horizontal)
     }
     
-    struct ViewState {
+    public struct ViewState {
         let labels: LabelsView.ViewState
         let iconPosition: IconPosition
+        
+        public init(labels: LabelsView.ViewState, iconPosition: IconPosition) {
+            self.labels = labels
+            self.iconPosition = iconPosition
+        }
     }
     
-    enum IconPosition {
+    public enum IconPosition {
         case left, right
     }
     
-    func render(viewState: ViewState) {
+    public func render(viewState: ViewState) {
         _labelsView.render(viewState: viewState.labels)
         
         switch viewState.iconPosition {

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SimpleView: UIView {
+public class SimpleView: UIView {
     private let _textWithIconView = TextWithIconView()
     private let _bottomButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -61,7 +61,7 @@ class SimpleView: UIView {
         _closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
     }
     
-    func render(viewState: ViewState) {
+    public func render(viewState: ViewState) {
         _textWithIconView.render(viewState: viewState.textWithIconView)
         _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
         _bottomButton.isHidden = viewState.buttonTitle == nil
@@ -76,10 +76,17 @@ class SimpleView: UIView {
         _closeButton.isHidden = !viewState.needCloseButton
     }
     
-    struct ViewState {
+    public struct ViewState {
         let textWithIconView: TextWithIconView.ViewState
         let buttonTitle: String?
         let backgroundType: BackgroundType
         let needCloseButton: Bool
+        
+        public init(textWithIconView: TextWithIconView.ViewState, buttonTitle: String?, backgroundType: BackgroundType, needCloseButton: Bool) {
+            self.textWithIconView = textWithIconView
+            self.buttonTitle = buttonTitle
+            self.backgroundType = backgroundType
+            self.needCloseButton = needCloseButton
+        }
     }
 }

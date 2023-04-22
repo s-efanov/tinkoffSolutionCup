@@ -13,12 +13,7 @@
 		FC1EA94429F38C9B00567679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1EA94229F38C9B00567679 /* Main.storyboard */; };
 		FC1EA94629F38C9B00567679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1EA94529F38C9B00567679 /* Assets.xcassets */; };
 		FC1EA94929F38C9B00567679 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1EA94729F38C9B00567679 /* LaunchScreen.storyboard */; };
-		FC1EA95129F3DBF000567679 /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95029F3DBF000567679 /* SimpleView.swift */; };
-		FC1EA95429F3E6ED00567679 /* LabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95329F3E6ED00567679 /* LabelsView.swift */; };
-		FC1EA95629F3E7BF00567679 /* TextWithIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95529F3E7BF00567679 /* TextWithIconView.swift */; };
-		FC1EA95829F3EFE300567679 /* TablePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95729F3EFE300567679 /* TablePresentationView.swift */; };
-		FC1EA95A29F3F59F00567679 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95929F3F59F00567679 /* Extensions.swift */; };
-		FC1EA95C29F3FAC800567679 /* CollectionPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA95B29F3FAC800567679 /* CollectionPresentationView.swift */; };
+		FC1EA96129F4047400567679 /* EfanovPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FC1EA96029F4047400567679 /* EfanovPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +25,7 @@
 		FC1EA94529F38C9B00567679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1EA94829F38C9B00567679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC1EA94A29F38C9B00567679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC1EA95029F3DBF000567679 /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
-		FC1EA95329F3E6ED00567679 /* LabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsView.swift; sourceTree = "<group>"; };
-		FC1EA95529F3E7BF00567679 /* TextWithIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithIconView.swift; sourceTree = "<group>"; };
-		FC1EA95729F3EFE300567679 /* TablePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablePresentationView.swift; sourceTree = "<group>"; };
-		FC1EA95929F3F59F00567679 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		FC1EA95B29F3FAC800567679 /* CollectionPresentationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPresentationView.swift; sourceTree = "<group>"; };
+		FC1EA95E29F4043800567679 /* EfanovPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = EfanovPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1EA96129F4047400567679 /* EfanovPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +43,10 @@
 		FC1EA93029F38C9B00567679 = {
 			isa = PBXGroup;
 			children = (
+				FC1EA95E29F4043800567679 /* EfanovPackage */,
 				FC1EA93B29F38C9B00567679 /* TinkoffSolutionsCup */,
 				FC1EA93A29F38C9B00567679 /* Products */,
+				FC1EA95F29F4047400567679 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +61,6 @@
 		FC1EA93B29F38C9B00567679 /* TinkoffSolutionsCup */ = {
 			isa = PBXGroup;
 			children = (
-				FC1EA95229F3E6E300567679 /* Items */,
 				FC1EA93C29F38C9B00567679 /* AppDelegate.swift */,
 				FC1EA93E29F38C9B00567679 /* SceneDelegate.swift */,
 				FC1EA94029F38C9B00567679 /* ViewController.swift */,
@@ -80,17 +72,11 @@
 			path = TinkoffSolutionsCup;
 			sourceTree = "<group>";
 		};
-		FC1EA95229F3E6E300567679 /* Items */ = {
+		FC1EA95F29F4047400567679 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FC1EA95B29F3FAC800567679 /* CollectionPresentationView.swift */,
-				FC1EA95329F3E6ED00567679 /* LabelsView.swift */,
-				FC1EA95029F3DBF000567679 /* SimpleView.swift */,
-				FC1EA95529F3E7BF00567679 /* TextWithIconView.swift */,
-				FC1EA95729F3EFE300567679 /* TablePresentationView.swift */,
-				FC1EA95929F3F59F00567679 /* Extensions.swift */,
 			);
-			path = Items;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +95,9 @@
 			dependencies = (
 			);
 			name = TinkoffSolutionsCup;
+			packageProductDependencies = (
+				FC1EA96029F4047400567679 /* EfanovPackage */,
+			);
 			productName = TinkoffSolutionsCup;
 			productReference = FC1EA93929F38C9B00567679 /* TinkoffSolutionsCup.app */;
 			productType = "com.apple.product-type.application";
@@ -164,12 +153,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC1EA95129F3DBF000567679 /* SimpleView.swift in Sources */,
-				FC1EA95429F3E6ED00567679 /* LabelsView.swift in Sources */,
-				FC1EA95829F3EFE300567679 /* TablePresentationView.swift in Sources */,
-				FC1EA95A29F3F59F00567679 /* Extensions.swift in Sources */,
-				FC1EA95629F3E7BF00567679 /* TextWithIconView.swift in Sources */,
-				FC1EA95C29F3FAC800567679 /* CollectionPresentationView.swift in Sources */,
 				FC1EA94129F38C9B00567679 /* ViewController.swift in Sources */,
 				FC1EA93D29F38C9B00567679 /* AppDelegate.swift in Sources */,
 				FC1EA93F29F38C9B00567679 /* SceneDelegate.swift in Sources */,
@@ -388,6 +371,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC1EA96029F4047400567679 /* EfanovPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EfanovPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC1EA93129F38C9B00567679 /* Project object */;
 }
