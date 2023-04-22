@@ -14,7 +14,7 @@ var flowLayout: UICollectionViewFlowLayout {
     _flowLayout.itemSize = CGSize(width: 140, height: 140)
     _flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
     _flowLayout.minimumInteritemSpacing = 0.0
-    _flowLayout.sectionInset = .init(top: 0, left: 20, bottom: 0, right: 0)
+    _flowLayout.sectionInset = .init(top: 0, left: 20, bottom: 0, right: 20)
     // edit properties here
     return _flowLayout
 }
@@ -91,7 +91,7 @@ public final class CollectionPresentationView: UIView {
         _stackView.topAnchor.constraint(equalTo: _headerLabel.bottomAnchor, constant: 20).isActive = true
         _stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         _stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        _stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        _stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         
         _stackView.addArrangedSubview(_collectionView)
         
@@ -117,6 +117,18 @@ public final class CollectionPresentationView: UIView {
         
         _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
         _bottomButton.isHidden = viewState.buttonTitle == nil
+        
+        if viewState.needShadow {
+            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+            layer.shadowOpacity = 1
+            layer.shadowRadius = 34
+            layer.shadowOffset = CGSize(width: 0, height: 6)
+        } else {
+            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowOpacity = 0
+            layer.shadowRadius = 0
+            layer.shadowOffset = CGSize.zero
+        }
     }
     
     public struct ViewState {
@@ -124,17 +136,20 @@ public final class CollectionPresentationView: UIView {
         let items: [LabelsView.ViewState]
         let buttonTitle: String?
         let backgroundType: BackgroundType
+        let needShadow: Bool
         
         public init(
             headerTitle: String,
             items: [LabelsView.ViewState],
             buttonTitle: String?,
-            backgroundType: BackgroundType
+            backgroundType: BackgroundType,
+            needShadow: Bool
         ) {
             self.headerTitle = headerTitle
             self.items = items
             self.buttonTitle = buttonTitle
             self.backgroundType = backgroundType
+            self.needShadow = needShadow
         }
     }
 }

@@ -77,17 +77,34 @@ public final class TablePresentationView: UIView {
         case .gray:
             backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
         }
+        
+        layer.cornerRadius = 24
+        _tableView.backgroundColor = .clear
+        
+        if viewState.needShadow {
+            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+            layer.shadowOpacity = 1
+            layer.shadowRadius = 34
+            layer.shadowOffset = CGSize(width: 0, height: 6)
+        } else {
+            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowOpacity = 0
+            layer.shadowRadius = 0
+            layer.shadowOffset = CGSize.zero
+        }
     }
     
     public struct ViewState {
         let headerTitle: String
         let items: [TextWithIconView.ViewState]
         let backgroundType: BackgroundType
+        let needShadow: Bool
         
-        public init(headerTitle: String, items: [TextWithIconView.ViewState], backgroundType: BackgroundType) {
+        public init(headerTitle: String, items: [TextWithIconView.ViewState], backgroundType: BackgroundType, needShadow: Bool) {
             self.headerTitle = headerTitle
             self.items = items
             self.backgroundType = backgroundType
+            self.needShadow = needShadow
         }
     }
 }
