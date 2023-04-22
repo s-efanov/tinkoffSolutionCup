@@ -50,6 +50,9 @@ class TextWithIconView: UIView {
         _stackView.addArrangedSubview(_leftIcon)
         _stackView.addArrangedSubview(_labelsView)
         _stackView.addArrangedSubview(_rightIcon)
+        
+        _leftIcon.setContentHuggingPriority(.required, for: .horizontal)
+        _rightIcon.setContentHuggingPriority(.required, for: .horizontal)
     }
     
     struct ViewState {

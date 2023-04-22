@@ -82,8 +82,4 @@ class SimpleView: UIView {
         let backgroundType: BackgroundType
         let needCloseButton: Bool
     }
-    
-    enum BackgroundType {
-        case white, gray
-    }
 }
