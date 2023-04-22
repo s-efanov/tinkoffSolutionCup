@@ -113,3 +113,18 @@ public class SimpleView: UIView {
         }
     }
 }
+
+#if DEBUG
+extension SimpleView.ViewState {
+    public static func mock() -> SimpleView.ViewState {
+        .init(textWithIconView: .init(
+            labels: .mock(),
+            iconPosition: .left
+        ),
+              backgroundType: .gray,
+              needCloseButton: true,
+              needShadow: false
+        )
+    }
+}
+#endif
