@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+//import Combine
 
 var flowLayout: UICollectionViewFlowLayout {
     let _flowLayout = UICollectionViewFlowLayout()
@@ -165,6 +166,21 @@ extension CollectionPresentationView: UICollectionViewDataSource {
         (cell as? CollectionItem)?.render(viewState: _items[indexPath.row])
         return cell
     }
+}
+
+extension CollectionPresentationView {
+    enum Events {
+        case closeButtonTapped
+        case bottomButtonTapped
+    }
+    
+    //Подписки на нажатия кнопки
+//    var events: AnyPublisher<Events, Never> {
+//        Publishers.MergeMany(
+//            _closeButton.tapPublisher.map { .closeButtonTapped }
+//            _bottomButton.tapPublisher.map { .bottomButtonTapped }
+//        )
+//    }
 }
 
 class CollectionItem: UICollectionViewCell {

@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+//import Combine
 
 public final class TablePresentationView: UIView {
     private let _tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -108,6 +110,19 @@ public final class TablePresentationView: UIView {
             self.needShadow = needShadow
         }
     }
+}
+
+extension TablePresentationView {
+    enum Events {
+        case closeButtonTapped
+    }
+    
+    //Подписки на нажатия кнопки
+//    var events: AnyPublisher<Events, Never> {
+//        Publishers.MergeMany(
+//            _closeButton.tapPublisher.map { .closeButtonTapped }
+//        )
+//    }
 }
 
 extension TablePresentationView: UITableViewDataSource {

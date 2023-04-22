@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+//import Combine
 
 public class SimpleView: UIView {
     private let _textWithIconView = TextWithIconView()
@@ -112,6 +113,21 @@ public class SimpleView: UIView {
             self.needShadow = needShadow
         }
     }
+}
+
+extension SimpleView {
+    enum Events {
+        case bottomButtonTapped
+        case closeButtonTapped
+    }
+    
+    //Подписки на нажатия кнопки
+//    var events: AnyPublisher<Events, Never> {
+//        Publishers.MergeMany(
+//            _bottomButton.tapPublisher.map { .bottomButtonTapped }
+//            _closeButton.tapPublisher.map { .closeButtonTapped }
+//        )
+//    }
 }
 
 #if DEBUG

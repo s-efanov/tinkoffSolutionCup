@@ -7,6 +7,7 @@
 
 import UIKit
 import EfanovPackage
+//import Combine
 
 class ViewController: UIViewController {
     let scrollView = UIScrollView()
@@ -40,6 +41,14 @@ class ViewController: UIViewController {
             needCloseButton: false,
             needShadow: true
         ))
+        
+        // Пример обработки нажатия на нопки во вьюшке
+//        simpleView1.events.sink { [weak self] event in
+//            switch event {
+//            case .closeButtonTapped: break // someAction
+//            case .bottomButtonTapped: break // someAction
+//            }
+//        }.store(in: &cancellableSet)
         
         ///
 
@@ -195,6 +204,14 @@ class ViewController: UIViewController {
             backgroundType: .white,
             needShadow: true
         ))
+        
+        // Пример обработки нажатия на нопки во вьюшке
+//        tableView.events.sink { [weak self] event in
+//            switch event {
+//            case .closeButtonTapped: break // someAction
+//            case .bottomButtonTapped: break // someAction
+//            }
+//        }.store(in: &cancellableSet)
 
         ///
         let collectionView = CollectionPresentationView()
@@ -232,6 +249,14 @@ class ViewController: UIViewController {
             backgroundType: .white,
             needShadow: true
         ))
+        
+        // Пример обработки нажатия на нопки во вьюшке
+//        collectionView.events.sink { [weak self] event in
+//            switch event {
+//            case .closeButtonTapped: break // someAction
+//            case .bottomButtonTapped: break // someAction
+//            }
+//        }.store(in: &cancellableSet)
     }
 }
 
