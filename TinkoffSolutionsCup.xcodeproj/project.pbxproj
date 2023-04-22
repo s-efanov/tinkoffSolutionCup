@@ -70,7 +70,6 @@
 				FC1EA94529F38C9B00567679 /* Assets.xcassets */,
 				FC1EA94729F38C9B00567679 /* LaunchScreen.storyboard */,
 				FC1EA94A29F38C9B00567679 /* Info.plist */,
-				FC1EA95029F3DBF000567679 /* SimpleView.swift */,
 			);
 			path = TinkoffSolutionsCup;
 			sourceTree = "<group>";
@@ -79,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				FC1EA95329F3E6ED00567679 /* LabelsView.swift */,
+				FC1EA95029F3DBF000567679 /* SimpleView.swift */,
 				FC1EA95529F3E7BF00567679 /* TextWithIconView.swift */,
 			);
 			path = Items;

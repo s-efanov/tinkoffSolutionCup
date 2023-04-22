@@ -23,16 +23,31 @@ class ViewController: UIViewController {
 //
 //        labelsView.render(viewState: .init(header: "Header", subheader: "Subheader", title: "title"))
         
-        let textWithIconView = TextWithIconView()
-        view.addSubview(textWithIconView)
+//        let textWithIconView = TextWithIconView()
+//        view.addSubview(textWithIconView)
+//
+//        textWithIconView.translatesAutoresizingMaskIntoConstraints = false
+//        textWithIconView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        textWithIconView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//
+//        textWithIconView.render(viewState: .init(
+//            labels: .init(header: "Header", subheader: "Subheader", title: "title"),
+//            iconPosition: .right
+//        ))
         
-        textWithIconView.translatesAutoresizingMaskIntoConstraints = false
-        textWithIconView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        textWithIconView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        let simpleView = SimpleView()
+        view.addSubview(simpleView)
         
-        textWithIconView.render(viewState: .init(
-            labels: .init(header: "Header", subheader: "Subheader", title: "title"),
-            iconPosition: .right
+        simpleView.translatesAutoresizingMaskIntoConstraints = false
+        simpleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        simpleView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        
+        simpleView.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(header: "Header", subheader: "Subheader", title: "title"),
+                iconPosition: .left
+            ),
+            buttonTitle: "Button1"
         ))
     }
 
