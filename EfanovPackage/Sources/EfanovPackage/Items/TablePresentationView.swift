@@ -24,7 +24,7 @@ public final class TablePresentationView: UIView {
     
     private let _closeButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitleColor(UIColor(red: 0.259, green: 0.545, blue: 0.976, alpha: 1), for: .normal)
+        button.setTitleColor(EfanovColor.buttonTittleColor, for: .normal)
         button.setTitle("Button", for: .normal)
         return button
     }()
@@ -75,14 +75,14 @@ public final class TablePresentationView: UIView {
         case .white:
             backgroundColor = .white
         case .gray:
-            backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
+            backgroundColor = EfanovColor.grayBackgroundColor
         }
         
         layer.cornerRadius = 24
         _tableView.backgroundColor = .clear
         
         if viewState.needShadow {
-            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+            layer.shadowColor = EfanovColor.shadowCollor.cgColor
             layer.shadowOpacity = 1
             layer.shadowRadius = 34
             layer.shadowOffset = CGSize(width: 0, height: 6)

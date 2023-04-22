@@ -11,7 +11,7 @@ import UIKit
 public class LabelsView: UIView {
     private let _headerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        label.textColor = EfanovColor.headerColor
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -23,13 +23,13 @@ public class LabelsView: UIView {
     }()
     private let _subheaderLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(red: 0.573, green: 0.6, blue: 0.635, alpha: 1)
+        label.textColor = EfanovColor.labelColor
         label.font = .systemFont(ofSize: 15)
         return label
     }()
     private let _descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(red: 0.573, green: 0.6, blue: 0.635, alpha: 1)
+        label.textColor = EfanovColor.labelColor
         label.font = .systemFont(ofSize: 13)
         return label
     }()

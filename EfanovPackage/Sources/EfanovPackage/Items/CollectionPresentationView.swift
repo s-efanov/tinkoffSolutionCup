@@ -35,22 +35,22 @@ public final class CollectionPresentationView: UIView {
     
     private let _headerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        label.textColor = EfanovColor.headerColor
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
     private let _closeButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitleColor(UIColor(red: 0.259, green: 0.545, blue: 0.976, alpha: 1), for: .normal)
+        button.setTitleColor(EfanovColor.buttonTittleColor, for: .normal)
         button.setTitle("Button", for: .normal)
         return button
     }()
     
     private let _bottomButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitleColor(UIColor(red: 0.259, green: 0.545, blue: 0.976, alpha: 1), for: .normal)
-        button.backgroundColor = UIColor(red: 0, green: 0.063, blue: 0.141, alpha: 0.03)
+        button.setTitleColor(EfanovColor.buttonTittleColor, for: .normal)
+        button.backgroundColor = EfanovColor.buttonBackgroundColor
         button.layer.cornerRadius = 12
         return button
     }()
@@ -112,14 +112,14 @@ public final class CollectionPresentationView: UIView {
         case .white:
             backgroundColor = .white
         case .gray:
-            backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
+            backgroundColor = EfanovColor.grayBackgroundColor
         }
         
         _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
         _bottomButton.isHidden = viewState.buttonTitle == nil
         
         if viewState.needShadow {
-            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+            layer.shadowColor = EfanovColor.shadowCollor.cgColor
             layer.shadowOpacity = 1
             layer.shadowRadius = 34
             layer.shadowOffset = CGSize(width: 0, height: 6)
@@ -179,7 +179,7 @@ class CollectionItem: UICollectionViewCell {
     
     private let _backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
+        view.backgroundColor = EfanovColor.grayBackgroundColor
         view.layer.cornerRadius = 12
         return view
     }()
