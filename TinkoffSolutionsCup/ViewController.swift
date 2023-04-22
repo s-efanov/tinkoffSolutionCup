@@ -60,47 +60,81 @@ class ViewController: UIViewController {
         
         //////
         
-        let tableView = TablePresentationView()
-        view.addSubview(tableView)
+//        let tableView = TablePresentationView()
+//        view.addSubview(tableView)
+//
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        tableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+//        tableView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+//
+//        tableView.render(viewState: .init(
+//            headerTitle: "Header",
+//            items: [
+//            .init(labels: .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            ),
+//                  iconPosition: .left
+//            ),
+//            .init(labels: .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            ),
+//                  iconPosition: .left
+//            ),
+//            .init(labels: .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            ),
+//                  iconPosition: .left
+//            )
+//            ],
+//            backgroundType: .gray
+//        ))
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        tableView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        ////
+        ///
+        let collectionView = CollectionPresentationView()
+        view.addSubview(collectionView)
         
-        tableView.render(viewState: .init(
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        
+        collectionView.render(viewState: .init(
             headerTitle: "Header",
             items: [
-            .init(labels: .init(
+            .init(
                 header: nil,
                 subheader: nil,
                 title: "title",
                 description: "description"
             ),
-                  iconPosition: .left
-            ),
-            .init(labels: .init(
+            .init(
                 header: nil,
                 subheader: nil,
                 title: "title",
                 description: "description"
             ),
-                  iconPosition: .left
-            ),
-            .init(labels: .init(
+            .init(
                 header: nil,
                 subheader: nil,
                 title: "title",
                 description: "description"
-            ),
-                  iconPosition: .left
             )
             ],
-            backgroundType: .gray
+            buttonTitle: "Button",
+            backgroundType: .white
         ))
     }
-
-
 }
 

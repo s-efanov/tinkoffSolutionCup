@@ -8,11 +8,29 @@
 import Foundation
 import UIKit
 
-final class TablePresentationView: UIView {
-    private let _tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .clear
-        return tableView
+var flowLayout: UICollectionViewFlowLayout {
+    let _flowLayout = UICollectionViewFlowLayout()
+    // edit properties here
+    _flowLayout.itemSize = CGSize(width: 140, height: 140)
+    _flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+    _flowLayout.minimumInteritemSpacing = 0.0
+    _flowLayout.sectionInset = .init(top: 0, left: 20, bottom: 0, right: 0)
+    // edit properties here
+    return _flowLayout
+}
+
+final class CollectionPresentationView: UIView {
+    private let _stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        return stackView
+    }()
+    
+    private let _collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .clear
+        return collectionView
     }()
     
     private let _headerLabel: UILabel = {
@@ -29,7 +47,15 @@ final class TablePresentationView: UIView {
         return button
     }()
     
-    private var _items: [TextWithIconView.ViewState] = []
+    private let _bottomButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitleColor(UIColor(red: 0.259, green: 0.545, blue: 0.976, alpha: 1), for: .normal)
+        button.backgroundColor = UIColor(red: 0, green: 0.063, blue: 0.141, alpha: 0.03)
+        button.layer.cornerRadius = 12
+        return button
+    }()
+    
+    private var _items: [LabelsView.ViewState] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,12 +66,20 @@ final class TablePresentationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override var intrinsicContentSize: CGSize {
+//        _collectionView.contentSize
+//    }
+    
     private func _setupSubviews() {
-        addSubview(_headerLabel)
-        addSubview(_tableView)
-        addSubview(_closeButton)
+        layer.cornerRadius = 24
         
-        _tableView.register(TableItem.self)
+        
+        addSubview(_stackView)
+        
+        addSubview(_headerLabel)
+        addSubview(_closeButton)
+        addSubview(_collectionView)
+        _collectionView.register(CollectionItem.self)
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -57,19 +91,26 @@ final class TablePresentationView: UIView {
         _closeButton.firstBaselineAnchor.constraint(equalTo: _headerLabel.firstBaselineAnchor).isActive = true
         _closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         
-        _tableView.translatesAutoresizingMaskIntoConstraints = false
-        _tableView.topAnchor.constraint(equalTo: _headerLabel.bottomAnchor, constant: 20).isActive = true
-        _tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        _tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        _tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        _stackView.translatesAutoresizingMaskIntoConstraints = false
+        _stackView.topAnchor.constraint(equalTo: _headerLabel.bottomAnchor, constant: 20).isActive = true
+        _stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        _stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        _stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        _tableView.dataSource = self
+        _stackView.addArrangedSubview(_collectionView)
+        
+        _stackView.addArrangedSubview(_bottomButton)
+
+        _collectionView.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        _bottomButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        _collectionView.dataSource = self
     }
     
     func render(viewState: ViewState) {
         _headerLabel.text = viewState.headerTitle
         _items = viewState.items
-        _tableView.reloadData()
+        _collectionView.reloadData()
         
         switch viewState.backgroundType {
         case .white:
@@ -77,74 +118,101 @@ final class TablePresentationView: UIView {
         case .gray:
             backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
         }
+        
+        _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
+        _bottomButton.isHidden = viewState.buttonTitle == nil
     }
     
     struct ViewState {
         let headerTitle: String
-        let items: [TextWithIconView.ViewState]
+        let items: [LabelsView.ViewState]
+        let buttonTitle: String?
         let backgroundType: BackgroundType
     }
 }
 
-extension TablePresentationView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension CollectionPresentationView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         _items.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableItem.reuseIdentifier, for: indexPath)
-        (cell as? TableItem)?.render(viewState: _items[indexPath.row])
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionItem.reuseIdentifier, for: indexPath)
+        (cell as? CollectionItem)?.render(viewState: _items[indexPath.row])
         return cell
     }
-    
-    
 }
 
-class TableItem: UITableViewCell {
-    let textWithIconView: TextWithIconView = {
-        TextWithIconView()
+class CollectionItem: UICollectionViewCell {
+    let textWithIconView: LabelsView = {
+        LabelsView()
     }()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    private let _icon = {
+        let imageView = UIImageView(image: UIImage(named: "Star"))
+        imageView.contentMode = .center
+        return imageView
+    }()
+    
+    private let _backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.965, green: 0.969, blue: 0.973, alpha: 1)
+        view.layer.cornerRadius = 12
+        return view
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        backgroundColor = .clear
         contentView.backgroundColor = .clear
         contentView.addSubview(textWithIconView)
+        contentView.addSubview(_icon)
+        
+        _icon.translatesAutoresizingMaskIntoConstraints = false
+        _icon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+        _icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
 
         textWithIconView.translatesAutoresizingMaskIntoConstraints = false
-        textWithIconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        textWithIconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-        textWithIconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        textWithIconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
+        textWithIconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         textWithIconView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        contentView.addSubview(_backgroundView)
+        _backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        _backgroundView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        _backgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        _backgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        _backgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        contentView.sendSubviewToBack(_backgroundView)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func render(viewState: TextWithIconView.ViewState) {
+    func render(viewState: LabelsView.ViewState) {
         textWithIconView.render(viewState: viewState)
     }
 }
 
 
-extension UITableView {
-    func register<T: UITableViewCell>(_ type: T.Type) {
-        register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
+extension UICollectionView {
+    func register<T: UICollectionViewCell>(_ type: T.Type) {
+        register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
-    func reuse<T: UITableViewCell>(_ type: T.Type, _ indexPath: IndexPath) -> T {
-        dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
+    func reuse<T: UICollectionViewCell>(_ type: T.Type, _ indexPath: IndexPath) -> T {
+        dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
 }
 
-extension UITableViewCell {
+extension UICollectionViewCell {
     static var reuseIdentifier: String {
         String(describing: self)
     }
 
-    var reuseIdentifier: String {
+    open override var reuseIdentifier: String {
         type(of: self).reuseIdentifier
     }
 }

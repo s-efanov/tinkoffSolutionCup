@@ -10,7 +10,7 @@ import UIKit
 
 class SimpleView: UIView {
     private let _textWithIconView = TextWithIconView()
-    private let _button: UIButton = {
+    private let _bottomButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(red: 0.259, green: 0.545, blue: 0.976, alpha: 1), for: .normal)
         button.backgroundColor = UIColor(red: 0, green: 0.063, blue: 0.141, alpha: 0.03)
@@ -51,7 +51,7 @@ class SimpleView: UIView {
         _stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         
         _stackView.addArrangedSubview(_textWithIconView)
-        _stackView.addArrangedSubview(_button)
+        _stackView.addArrangedSubview(_bottomButton)
         
         layer.cornerRadius = 24
         
@@ -63,8 +63,8 @@ class SimpleView: UIView {
     
     func render(viewState: ViewState) {
         _textWithIconView.render(viewState: viewState.textWithIconView)
-        _button.setTitle(viewState.buttonTitle, for: .normal)
-        _button.isHidden = viewState.buttonTitle == nil
+        _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
+        _bottomButton.isHidden = viewState.buttonTitle == nil
         
         switch viewState.backgroundType {
         case .white:
