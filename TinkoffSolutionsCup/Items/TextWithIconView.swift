@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 class TextWithIconView: UIView {
-    let labelsView = LabelsView()
-    let leftIcon: UIImageView = {
+    private let _labelsView = LabelsView()
+    private let _leftIcon: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Star"))
         imageView.contentMode = .center
         return imageView
     }()
-    let rightIcon = {
+    private let _rightIcon = {
         let imageView = UIImageView(image: UIImage(named: "Star"))
         imageView.contentMode = .center
         return imageView
     }()
     
-    var stackView: UIStackView = {
+    private let _stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -30,26 +30,26 @@ class TextWithIconView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
+        _setupSubviews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupSubviews() {
-        addSubview(stackView)
+    private func _setupSubviews() {
+        addSubview(_stackView)
         
         translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        _stackView.translatesAutoresizingMaskIntoConstraints = false
+        _stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        _stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        _stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        _stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        stackView.addArrangedSubview(leftIcon)
-        stackView.addArrangedSubview(labelsView)
-        stackView.addArrangedSubview(rightIcon)
+        _stackView.addArrangedSubview(_leftIcon)
+        _stackView.addArrangedSubview(_labelsView)
+        _stackView.addArrangedSubview(_rightIcon)
     }
     
     struct ViewState {
@@ -62,15 +62,15 @@ class TextWithIconView: UIView {
     }
     
     func render(viewState: ViewState) {
-        labelsView.render(viewState: viewState.labels)
+        _labelsView.render(viewState: viewState.labels)
         
         switch viewState.iconPosition {
         case .left:
-            rightIcon.isHidden = true
-            leftIcon.isHidden = false
+            _rightIcon.isHidden = true
+            _leftIcon.isHidden = false
         case .right:
-            rightIcon.isHidden = false
-            leftIcon.isHidden = true
+            _rightIcon.isHidden = false
+            _leftIcon.isHidden = true
         }
     }
 }

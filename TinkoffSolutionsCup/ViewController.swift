@@ -44,10 +44,12 @@ class ViewController: UIViewController {
         
         simpleView.render(viewState: .init(
             textWithIconView: .init(
-                labels: .init(header: "Header", subheader: "Subheader", title: "title"),
+                labels: .init(header: "Header", subheader: "Subheader", title: "title", description: "description"),
                 iconPosition: .left
             ),
-            buttonTitle: "Button1"
+            buttonTitle: "Button1",
+            backgroundType: .gray,
+            needCloseButton: true
         ))
     }
 
