@@ -10,17 +10,18 @@ import Foundation
 import XCTest
 @testable import EfanovPackage
 
-final class TablePresentationViewTests: XCTestCase {
+final class CollectionPresentationViewTests: XCTestCase {
     // TODO - Непонятно что с размерами изображений, нужно разобраться
     // TODO - Нужно больше тестов
-    func testTable() {
-        let view = TablePresentationView(frame: .zero)
+    func testCollection() {
+        let view = CollectionPresentationView(frame: .zero)
         view.render(viewState: .init(
-            headerTitle: "Header",
+            headerTitle: "title",
             items: [
-                .init(labels: .init(header: "Header"), iconPosition: .left)
-            ],
-            backgroundType: .gray,
+                .init(header: "Header")
+        ],
+            buttonTitle: "BuutonTitle",
+            backgroundType: .white,
             needShadow: true
         ))
         assertSnapshots(matching: view, as: [Snapshotting.image(size: CGSize(width: 700, height: 300))])
