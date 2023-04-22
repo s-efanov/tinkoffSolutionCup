@@ -59,6 +59,8 @@ public class SimpleView: UIView {
         _closeButton.translatesAutoresizingMaskIntoConstraints = false
         _closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         _closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
+        _bottomButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
     public func render(viewState: ViewState) {
@@ -74,6 +76,18 @@ public class SimpleView: UIView {
         }
         
         _closeButton.isHidden = !viewState.needCloseButton
+        
+        if viewState.needShadow {
+            layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+            layer.shadowOpacity = 1
+            layer.shadowRadius = 34
+            layer.shadowOffset = CGSize(width: 0, height: 6)
+        } else {
+            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowOpacity = 0
+            layer.shadowRadius = 0
+            layer.shadowOffset = CGSize.zero
+        }
     }
     
     public struct ViewState {
@@ -81,12 +95,20 @@ public class SimpleView: UIView {
         let buttonTitle: String?
         let backgroundType: BackgroundType
         let needCloseButton: Bool
+        let needShadow: Bool
         
-        public init(textWithIconView: TextWithIconView.ViewState, buttonTitle: String?, backgroundType: BackgroundType, needCloseButton: Bool) {
+        public init(
+            textWithIconView: TextWithIconView.ViewState,
+            buttonTitle: String? = nil,
+            backgroundType: BackgroundType,
+            needCloseButton: Bool,
+            needShadow: Bool
+        ) {
             self.textWithIconView = textWithIconView
             self.buttonTitle = buttonTitle
             self.backgroundType = backgroundType
             self.needCloseButton = needCloseButton
+            self.needShadow = needShadow
         }
     }
 }

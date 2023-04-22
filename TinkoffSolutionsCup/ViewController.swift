@@ -9,9 +9,6 @@ import UIKit
 import EfanovPackage
 
 class ViewController: UIViewController {
-
-//    let labelsview = LabelsView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,102 +37,214 @@ class ViewController: UIViewController {
 //        ))
         
         
-        //////
+        ///
         
-//        let simpleView = SimpleView()
-//        view.addSubview(simpleView)
+        let simpleView1 = SimpleView()
+        view.addSubview(simpleView1)
+
+        simpleView1.translatesAutoresizingMaskIntoConstraints = false
+        simpleView1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        simpleView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        simpleView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        simpleView1.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(header: "Header", subheader: "Subheader"),
+                iconPosition: .right
+            ),
+            backgroundType: .white,
+            needCloseButton: false,
+            needShadow: true
+        ))
+        
+        ///
+
+//        let simpleView2 = SimpleView()
+//        view.addSubview(simpleView2)
 //
-//        simpleView.translatesAutoresizingMaskIntoConstraints = false
-//        simpleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        simpleView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        simpleView2.translatesAutoresizingMaskIntoConstraints = false
+//        simpleView2.topAnchor.constraint(equalTo: simpleView1.bottomAnchor, constant: 10).isActive = true
+//        simpleView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+//        simpleView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
 //
-//        simpleView.render(viewState: .init(
+//        simpleView2.render(viewState: .init(
 //            textWithIconView: .init(
-//                labels: .init(header: "Header", subheader: "Subheader", title: "title", description: "description"),
-//                iconPosition: .left
+//                labels: .init(header: "Header", subheader: "Subheader"),
+//                iconPosition: .right
 //            ),
-//            buttonTitle: "Button1",
 //            backgroundType: .gray,
-//            needCloseButton: true
+//            needCloseButton: false,
+//            needShadow: false
 //        ))
+        
+//        let simpleView3 = SimpleView()
+//        view.addSubview(simpleView3)
+//
+//        simpleView3.translatesAutoresizingMaskIntoConstraints = false
+//        simpleView3.topAnchor.constraint(equalTo: simpleView1.bottomAnchor, constant: 10).isActive = true
+//        simpleView3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+//        simpleView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+//
+//        simpleView3.render(viewState: .init(
+//            textWithIconView: .init(
+//                labels: .init(header: "Header"),
+//                iconPosition: .right
+//            ),
+//            backgroundType: .white,
+//            needCloseButton: false,
+//            needShadow: true
+//        ))
+        
+        let simpleView4 = SimpleView()
+        view.addSubview(simpleView4)
+
+        simpleView4.translatesAutoresizingMaskIntoConstraints = false
+        simpleView4.topAnchor.constraint(equalTo: simpleView1.bottomAnchor, constant: 10).isActive = true
+        simpleView4.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        simpleView4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        simpleView4.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(header: "Header"),
+                iconPosition: .right
+            ),
+            backgroundType: .gray,
+            needCloseButton: false,
+            needShadow: false
+        ))
+        
+        let simpleView5 = SimpleView()
+        view.addSubview(simpleView5)
+
+        simpleView5.translatesAutoresizingMaskIntoConstraints = false
+        simpleView5.topAnchor.constraint(equalTo: simpleView4.bottomAnchor, constant: 10).isActive = true
+        simpleView5.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        simpleView5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        simpleView5.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(header: "Header", subheader: "Subheader"),
+                iconPosition: .right
+            ),
+            buttonTitle: "Button",
+            backgroundType: .white,
+            needCloseButton: false,
+            needShadow: true
+        ))
+        
+        let simpleView6 = SimpleView()
+        view.addSubview(simpleView6)
+
+        simpleView6.translatesAutoresizingMaskIntoConstraints = false
+        simpleView6.topAnchor.constraint(equalTo: simpleView5.bottomAnchor, constant: 10).isActive = true
+        simpleView6.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        simpleView6.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        simpleView6.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(title: "Title", description: "Description"),
+                iconPosition: .left
+            ),
+            backgroundType: .gray,
+            needCloseButton: false,
+            needShadow: false
+        ))
+        
+        let simpleView7 = SimpleView()
+        view.addSubview(simpleView7)
+
+        simpleView7.translatesAutoresizingMaskIntoConstraints = false
+        simpleView7.topAnchor.constraint(equalTo: simpleView6.bottomAnchor, constant: 10).isActive = true
+        simpleView7.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        simpleView7.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        simpleView7.render(viewState: .init(
+            textWithIconView: .init(
+                labels: .init(title: "Title", description: "Description"),
+                iconPosition: .left
+            ),
+            backgroundType: .white,
+            needCloseButton: true,
+            needShadow: true
+        ))
         
         //////
         
-//        let tableView = TablePresentationView()
-//        view.addSubview(tableView)
-//
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        tableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-//        tableView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-//
-//        tableView.render(viewState: .init(
-//            headerTitle: "Header",
-//            items: [
-//            .init(labels: .init(
-//                header: nil,
-//                subheader: nil,
-//                title: "title",
-//                description: "description"
-//            ),
-//                  iconPosition: .left
-//            ),
-//            .init(labels: .init(
-//                header: nil,
-//                subheader: nil,
-//                title: "title",
-//                description: "description"
-//            ),
-//                  iconPosition: .left
-//            ),
-//            .init(labels: .init(
-//                header: nil,
-//                subheader: nil,
-//                title: "title",
-//                description: "description"
-//            ),
-//                  iconPosition: .left
-//            )
-//            ],
-//            backgroundType: .gray
-//        ))
+        let tableView = TablePresentationView()
+        view.addSubview(tableView)
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: simpleView7.bottomAnchor, constant: 10).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+
+        tableView.render(viewState: .init(
+            headerTitle: "Header",
+            items: [
+            .init(labels: .init(
+                header: nil,
+                subheader: nil,
+                title: "title",
+                description: "description"
+            ),
+                  iconPosition: .left
+            ),
+            .init(labels: .init(
+                header: nil,
+                subheader: nil,
+                title: "title",
+                description: "description"
+            ),
+                  iconPosition: .left
+            ),
+            .init(labels: .init(
+                header: nil,
+                subheader: nil,
+                title: "title",
+                description: "description"
+            ),
+                  iconPosition: .left
+            )
+            ],
+            backgroundType: .white
+        ))
         
         ////
         ///
-        let collectionView = CollectionPresentationView()
-        view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        
-        collectionView.render(viewState: .init(
-            headerTitle: "Header",
-            items: [
-            .init(
-                header: nil,
-                subheader: nil,
-                title: "title",
-                description: "description"
-            ),
-            .init(
-                header: nil,
-                subheader: nil,
-                title: "title",
-                description: "description"
-            ),
-            .init(
-                header: nil,
-                subheader: nil,
-                title: "title",
-                description: "description"
-            )
-            ],
-            buttonTitle: "Button",
-            backgroundType: .white
-        ))
+//        let collectionView = CollectionPresentationView()
+//        view.addSubview(collectionView)
+//
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        collectionView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+//
+//        collectionView.render(viewState: .init(
+//            headerTitle: "Header",
+//            items: [
+//            .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            ),
+//            .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            ),
+//            .init(
+//                header: nil,
+//                subheader: nil,
+//                title: "title",
+//                description: "description"
+//            )
+//            ],
+//            buttonTitle: "Button",
+//            backgroundType: .white
+//        ))
     }
 }
 

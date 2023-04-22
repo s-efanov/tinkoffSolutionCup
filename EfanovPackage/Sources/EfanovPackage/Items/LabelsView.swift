@@ -85,7 +85,7 @@ public class LabelsView: UIView {
         let title: String?
         let description: String?
         
-        public init(header: String?, subheader: String?, title: String?, description: String?) {
+        public init(header: String? = nil, subheader: String? = nil, title: String? = nil, description: String? = nil) {
             self.header = header
             self.subheader = subheader
             self.title = title
