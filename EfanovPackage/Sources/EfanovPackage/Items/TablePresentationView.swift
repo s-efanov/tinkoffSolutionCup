@@ -66,6 +66,7 @@ public final class TablePresentationView: UIView {
         _tableView.dataSource = self
     }
     
+    // Конфигурирует вьюшку
     public func render(viewState: ViewState) {
         _headerLabel.text = viewState.headerTitle
         _items = viewState.items
@@ -95,10 +96,10 @@ public final class TablePresentationView: UIView {
     }
     
     public struct ViewState {
-        let headerTitle: String
-        let items: [TextWithIconView.ViewState]
-        let backgroundType: BackgroundType
-        let needShadow: Bool
+        let headerTitle: String // Заголовок для хедера
+        let items: [TextWithIconView.ViewState] // Элементы, которые нам нужно отображать. СМ TextWithIconView
+        let backgroundType: BackgroundType // Цвет беграунда согласно дизайн системе
+        let needShadow: Bool // если передан true, у вьюшки отобразится тень
         
         public init(headerTitle: String, items: [TextWithIconView.ViewState], backgroundType: BackgroundType, needShadow: Bool) {
             self.headerTitle = headerTitle

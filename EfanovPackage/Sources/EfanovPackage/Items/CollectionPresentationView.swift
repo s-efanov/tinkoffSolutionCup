@@ -103,6 +103,7 @@ public final class CollectionPresentationView: UIView {
         _collectionView.dataSource = self
     }
     
+    // Конфигурирует вьюшку
     public func render(viewState: ViewState) {
         _headerLabel.text = viewState.headerTitle
         _items = viewState.items

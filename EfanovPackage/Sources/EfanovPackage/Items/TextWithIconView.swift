@@ -56,8 +56,8 @@ public class TextWithIconView: UIView {
     }
     
     public struct ViewState {
-        let labels: LabelsView.ViewState
-        let iconPosition: IconPosition
+        let labels: LabelsView.ViewState // СМ LabelsView
+        let iconPosition: IconPosition // Иконка может отображаться слева и справа согласно дизайн системе
         
         public init(labels: LabelsView.ViewState, iconPosition: IconPosition) {
             self.labels = labels
@@ -69,6 +69,7 @@ public class TextWithIconView: UIView {
         case left, right
     }
     
+    // Конфигурирует вьюшку
     public func render(viewState: ViewState) {
         _labelsView.render(viewState: viewState.labels)
         

@@ -63,6 +63,7 @@ public class SimpleView: UIView {
         _bottomButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
+    // Конфигурирует вьюшку
     public func render(viewState: ViewState) {
         _textWithIconView.render(viewState: viewState.textWithIconView)
         _bottomButton.setTitle(viewState.buttonTitle, for: .normal)
@@ -91,11 +92,11 @@ public class SimpleView: UIView {
     }
     
     public struct ViewState {
-        let textWithIconView: TextWithIconView.ViewState
-        let buttonTitle: String?
-        let backgroundType: BackgroundType
-        let needCloseButton: Bool
-        let needShadow: Bool
+        let textWithIconView: TextWithIconView.ViewState // См описание TextWithIconView
+        let buttonTitle: String? // Если передан тайтл, покажет кнопку, иначе кнопка попадет
+        let backgroundType: BackgroundType //цвет беграунда согласно дизайну
+        let needCloseButton: Bool // отобразим кнопку закрытия согласно дизайну
+        let needShadow: Bool // если передан true, у вьюшки отобразится тень
         
         public init(
             textWithIconView: TextWithIconView.ViewState,

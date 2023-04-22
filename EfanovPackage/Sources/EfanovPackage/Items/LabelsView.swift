@@ -67,6 +67,7 @@ public class LabelsView: UIView {
         _stackView.setCustomSpacing(4, after: _headerLabel)
     }
     
+    // Конфигурирует вьюшку
     public func render(viewState: ViewState) {
         _headerLabel.text = viewState.header
         _titleLabel.text = viewState.title
@@ -80,10 +81,10 @@ public class LabelsView: UIView {
     }
     
     public struct ViewState {
-        let header: String?
-        let subheader: String?
-        let title: String?
-        let description: String?
+        let header: String? // Отображает хедер, если передать nil, то строка пропадет
+        let subheader: String? // Отображает сабхедер, если передать nil, то строка пропадет
+        let title: String? // Отображает тайтл, если передать nil, то строка пропадет
+        let description: String? // Отображает описание, если передать nil, то строка пропадет
         
         public init(header: String? = nil, subheader: String? = nil, title: String? = nil, description: String? = nil) {
             self.header = header
@@ -93,3 +94,16 @@ public class LabelsView: UIView {
         }
     }
 }
+
+#if DEBUG
+extension LabelsView.ViewState {
+    public static func mock(
+        header: String? = "Header",
+        subheader: String? = "Subheader",
+        title: String? = "Subheader",
+        description: String? = "description"
+    ) -> LabelsView.ViewState {
+        return .init(header: header, subheader: subheader, title: title, description: description)
+    }
+}
+#endif
